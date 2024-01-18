@@ -52,6 +52,17 @@ salesData = [
 average_sales = 0
 num_sales = 0
 
+for i in range(len(salesData)-1):
+    sorted = True
+    for i in range(len(salesData)-i-1):
+        if salesData[i][0] > salesData[i+1][0]:
+            temp = salesData[i][0]
+            salesData[i][0] = salesData[i+1][0]
+            salesData[i+1][0] = temp
+            sorted = False
+    if sorted:
+        break
+
 for row in range(0,len(salesData)):
     for column in range(0,len(salesData[row])):
         if column == 0:
@@ -60,6 +71,9 @@ for row in range(0,len(salesData)):
             print("Sales:",salesData[row][column])
             average_sales += salesData[row][column]
             num_sales += 1
+
+
+
 
 average_sales = average_sales/num_sales
 print(average_sales)
